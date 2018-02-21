@@ -1,7 +1,7 @@
 {
 	"name": "pwa-installer",
 	"version": "0.0.0",
-	"description": "Zero-configuration installer for PWA features.",
+	"description": "Zero-configuration for installing PWA features.",
 	"homepage": "https://cjpatoilo.com/pwa-installer",
 	"repository": "cjpatoilo/pwa-installer",
 	"license": "MIT",

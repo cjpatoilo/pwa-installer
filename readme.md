@@ -1,6 +1,6 @@
-<a align="center" href="https://cjpatoilo.com/pwa-installer"><img width="100%" src="https://cjpatoilo.com/pwa-installer/assets/icons/thumbnail.png" alt="PWA Installer - Zero-configuration installer for PWA features."></a>
+<a align="center" href="https://github.com/cjpatoilo/pwa-installer"><img width="100%" src="https://cjpatoilo.com/pwa-installer/assets/icons/thumbnail.png" alt="PWA Installer - Zero-configuration for installing PWA features."></a>
 
-> Zero-configuration installer for PWA features.
+> Zero-configuration for installing PWA features.
 
 [![Travis Status](https://travis-ci.org/cjpatoilo/pwa-installer.svg?branch=master)](https://travis-ci.org/cjpatoilo/pwa-installer?branch=master)
 [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/3e7283286e2147c78c41eac515714429?svg=true)](https://ci.appveyor.com/project/cjpatoilo/pwa-installer)
@@ -13,7 +13,7 @@
 
 ## Why it's awesome
 
-Zero-configuration installer for PWA features. Although [sw-precache](https://github.com/GoogleChromeLabs/sw-precache) works great as a light-weight tool to quickly install service worker support, it currently does not provide much functionality for installing specific "features".
+Zero-configuration for installing PWA features. Although [sw-precache](https://github.com/GoogleChromeLabs/sw-precache) works great as a light-weight tool to quickly install service worker support, it currently does not provide much functionality for installing specific "features".
 
 **Features**
 
@@ -45,7 +45,7 @@ $ yarn add pwa-installer
 $ npx pwa-installer
 ```
 
-*NOTE: Install this npm package with the flag `-g` or `--global` for global use. Install with the flag `-D` or `--save-dev` for add the package as a devDependency of your project.*
+*Note: Install this npm package with the flag `-g` or `--global` for global use. Install with the flag `-D` or `--save-dev` for add the package as a devDependency of your project.*
 
 
 ## Usage
@@ -70,7 +70,7 @@ $ pwa-installer --help
     $ pwa-installer dist --config=pwa.config.js
 ```
 
-NOTE: `dist` is output by default when output is undefined. If you don't define a specific file the support will be extended to all `.html` files.
+Note: Directory is required
 
 
 ## Contributing
