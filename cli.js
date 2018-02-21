@@ -9,7 +9,7 @@ const { exit } = process
 if (options.help || options.h) help()
 if (options.version || options.v) version()
 if (options.config || options.c) help()
-app(argv)
+app(options)
 
 function help () {
 	info(`

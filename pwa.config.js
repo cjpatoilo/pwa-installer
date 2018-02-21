@@ -2,7 +2,7 @@ module.exports = {
 	root: 'dist',
 	cacheId: '',
 	clientsClaim: true,
-	directoryIndex: 'index.html'
+	directoryIndex: 'index.html',
 	dontCacheBustUrlsMatching: null,
 	dynamicUrlToDependencies: {},
 	handleFetch: true,
