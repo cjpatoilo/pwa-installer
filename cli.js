@@ -1,21 +1,19 @@
 #!/usr/bin/env node
 'use strict'
-const options = require('rasper')()
+const rasper = require('rasper')
 const pkg = require('./package.json')
 const app = require('./index')
-const { info } = console
-const { exit } = process
+const options = process.argv[0].match(/node/i) ? rasper(process.argv.slice(2)) : rasper()
 
 if (options.help || options.h) help()
 if (options.version || options.v) version()
-if (options.config || options.c) help()
 app(options)
 
 function help () {
-	info(`
+	console.info(`
   Usage:
 
-    $ pwa-installer [<output>] [<options>]
+    $ pwa-installer <directory> [<options>]
 
   Options:
 
@@ -25,14 +23,13 @@ function help () {
 
   Examples:
 
-    $ pwa-installer
-    $ pwa-installer dist/index.html
+    $ pwa-installer dist
     $ pwa-installer dist --config=pwa.config.js
 `)
-	exit(1)
+	process.exit(1)
 }
 
 function version () {
-	info(pkg.version)
-	exit(1)
+	console.info(pkg.version)
+	process.exit(1)
 }
