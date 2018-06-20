@@ -1,42 +1,82 @@
 'use strict'
-const { existsSync, readFile, writeFile } = require('fs')
+const fs = require('fs')
+const path = require('path')
 const glob = require('glob')
-const NodeVersionAssets = require('node-version-assets')
-const { write } = require('sw-precache')
-const { info, log } = console
+const swPrecache = require('sw-precache')
 
-module.exports = (options = {}) => {
-	const output = options._[0]
-	const swFile = output + '/service-worker.js'
-	const replace = [
-		'</body>',
-		'<script src="service-worker.js"></script><script>if("serviceWorker" in navigator && window.location.protocol === "https:")navigator.serviceWorker.register("/service-worker.js")</script></body>'
-	]
+function getOutputs(output) {
+	return new Promise((resolve, reject) => {
+		fs.stat(output, async (error, stats) => {
+			if (!fs.existsSync(output) || error) {
+				console.log('[error] Not found')
+				process.exit(2)
+			}
 
-	if (!existsSync(output)) {
-		log('[error] Directory not found')
-		process.exit(2)
-	}
+			const assets = stats.isDirectory() ? await getFiles(output + '/**/*.{css,js}') : await getFiles(path.dirname(output) + '/**/*.{css,js}')
+			const base = stats.isDirectory() ? output : path.dirname(output)
+			const htmls = stats.isDirectory() ? await getFiles(output + '/**/*.html') : [output]
 
-	glob(output + '/**/*.{css,js}', (error, assets = []) => {
-		if (error) throw error
+			resolve({ assets, base, htmls })
+		})
+	})
+}
 
-		glob(output + '/**/*.html', async (error, grepFiles = []) => {
+function getFiles (path) {
+	return new Promise((resolve, reject) => {
+		glob(path, (err, data) => resolve(data))
+	})
+}
+
+function hashFile (hash, file) {
+	return `${path.dirname(file)}/${path.basename(file, path.extname(file))}-${hash + path.extname(file)}`
+}
+
+module.exports = async (options) => {
+	const { assets, base, htmls } = await getOutputs(options[0])
+	const hash = +new Date()
+
+	Promise.all([
+
+		htmls.map(html => fs.readFile(html, 'utf-8', (error, data) => {
 			if (error) throw error
 
-			await grepFiles.map(file => readFile(file, 'utf-8', (error, data) => {
+			const htmlBefore = '</body>'
+			const htmlAfter = '<script src="service-worker.js"></script><script>if("serviceWorker" in navigator && window.location.protocol === "https:")navigator.serviceWorker.register("/service-worker.js")</script></body>'
+
+			fs.writeFile(html, data.replace(htmlBefore, htmlAfter), (error, data) => {
+				if (error) throw error
+				console.info(`${html} was saved!`)
+			})
+		})),
+
+		assets.map(asset => fs.readFile(asset, 'utf-8', (error, data) => {
+			if (error) throw error
+
+			htmls.map(html => fs.readFile(html, 'utf-8', (error, data) => {
 				if (error) throw error
 
-				writeFile(file, data.replace(replace), (error, data) => {
+				const assetBefore = path.basename(asset)
+				const assetAfter = `${path.basename(asset, path.extname(asset))}-${hash + path.extname(asset)}`
+
+				fs.writeFile(html, data.replace(assetBefore, assetAfter), (error, data) => {
 					if (error) throw error
-					info(`${data} was saved!`)
 				})
 			}))
 
-			const nva = await new NodeVersionAssets({ assets, grepFiles })
-			nva.run()
+			fs.writeFile(hashFile(hash, asset), data, (error, data) => {
+				if (error) throw error
 
-			write(swFile, { staticFileGlobs: [output + '/**/*.{html,js,css,png,jpg,jpeg,gif,svg,ico,eot,ttf,woff,woff2,txt,webapp,json}'], stripPrefix: output })
+				fs.unlink(asset, (error, data) => {
+					if (error) throw error
+					console.info(`${hashFile(hash, asset)} was saved!`)
+				})
+			})
+		})),
+
+		swPrecache.write(`${base}/service-worker.js`, {
+			staticFileGlobs: [base + '/**/*.{html,js,css,png,jpg,jpeg,gif,svg,ico,eot,ttf,woff,woff2,txt,webapp,json}'],
+			stripPrefix: base
 		})
-	})
+
+	])
 }
