@@ -1,4 +1,4 @@
-<a href="https://github.com/cjpatoilo/pwa-installer"><img width="100%" src="https://cjpatoilo.com/pwa-installer/assets/icons/thumbnail.png" alt="PWA Installer - Zero-configuration for installing PWA features."></a>
+<a href="https://github.com/cjpatoilo/pwa-installer"><img width="100%" src="https://repository-images.githubusercontent.com/99695152/9fc8c280-f5b9-11e9-80ca-45435f7262a4" alt="PWA Installer - Zero-configuration for installing PWA features."></a>
 
 > Zero-configuration for installing PWA features.
 
