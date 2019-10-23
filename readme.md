@@ -1,4 +1,4 @@
-<a align="center" href="https://github.com/cjpatoilo/pwa-installer"><img width="100%" src="https://cjpatoilo.com/pwa-installer/assets/icons/thumbnail.png" alt="PWA Installer - Zero-configuration for installing PWA features."></a>
+<a href="https://github.com/cjpatoilo/pwa-installer"><img width="100%" src="https://cjpatoilo.com/pwa-installer/assets/icons/thumbnail.png" alt="PWA Installer - Zero-configuration for installing PWA features."></a>
 
 > Zero-configuration for installing PWA features.
 
@@ -75,9 +75,9 @@ Note: Directory is required
 
 ## Contributing
 
-Want to contribute? Follow these [recommendations](.github/contributing.md).
+Want to contribute? Follow these [recommendations](https://github.com/cjpatoilo/pwa-installer#contributing).
 
 
 ## License
 
-Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](license).
+Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](https://github.com/cjpatoilo/pwa-installer#license).
