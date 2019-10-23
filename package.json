@@ -1,6 +1,6 @@
 {
 	"name": "pwa-installer",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Zero-configuration for installing PWA features.",
 	"homepage": "https://cjpatoilo.com/pwa-installer",
 	"repository": "cjpatoilo/pwa-installer",
