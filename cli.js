@@ -3,14 +3,16 @@
 const rasper = require('rasper')
 const pkg = require('./package.json')
 const app = require('./index')
-const options = process.argv[0].match(/node/i) ? rasper(process.argv.slice(2)) : rasper()
+const options = process.argv[0].match(/node/i)
+  ? rasper(process.argv.slice(2))
+  : rasper()
 
 if (options.help || options.h) help()
 if (options.version || options.v) version()
 app(options)
 
 function help () {
-	console.info(`
+  console.info(`
   Usage:
 
     $ pwa-installer <directory> [<options>]
@@ -26,10 +28,10 @@ function help () {
     $ pwa-installer dist
     $ pwa-installer dist --config=pwa.config.js
 `)
-	process.exit(1)
+  process.exit(1)
 }
 
 function version () {
-	console.info(pkg.version)
-	process.exit(1)
+  console.info(pkg.version)
+  process.exit(1)
 }
