@@ -10,7 +10,6 @@
 [![Download Status](https://img.shields.io/npm/dt/pwa-installer.svg)](https://www.npmjs.com/package/pwa-installer)
 [![Gitter Chat](https://img.shields.io/badge/gitter-join_the_chat-4cc61e.svg)](https://gitter.im/cjpatoilo/pwa-installer)
 
-
 ## Why it's awesome
 
 Zero-configuration for installing PWA features. Although [sw-precache](https://github.com/GoogleChromeLabs/sw-precache) works great as a light-weight tool to quickly install service worker support, it currently does not provide much functionality for installing specific "features".
@@ -23,7 +22,6 @@ Zero-configuration for installing PWA features. Although [sw-precache](https://g
 - [x] Generate `service-worker.js` (files)
 - [x] Generate hashs in scripts and styles files (files)
 - [x] Automate `service-worker.js` call in your `html` files
-
 
 ## Install
 
@@ -45,8 +43,7 @@ $ yarn add pwa-installer
 $ npx pwa-installer
 ```
 
-*Note: Install this npm package with the flag `-g` or `--global` for global use. Install with the flag `-D` or `--save-dev` for add the package as a devDependency of your project.*
-
+_Note: Install this npm package with the flag `-g` or `--global` for global use. Install with the flag `-D` or `--save-dev` for add the package as a devDependency of your project._
 
 ## Usage
 
@@ -72,12 +69,10 @@ $ pwa-installer --help
 
 Note: Directory is required
 
-
 ## Contributing
 
-Want to contribute? Follow these [recommendations](https://github.com/cjpatoilo/pwa-installer#contributing).
-
+Want to contribute? Follow these [recommendations](https://github.com/cjpatoilo/pwa-installer/contribute).
 
 ## License
 
-Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](https://github.com/cjpatoilo/pwa-installer#license).
+Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](https://cjpatoilo.com/license).
